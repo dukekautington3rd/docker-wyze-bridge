@@ -15,7 +15,7 @@ env:
   PRISMA_PASSWORD: ${{ secrets.PCC_PASS }}
   PRISMA_API_URL: ${{ vars.PRISMA_API_URL }}
   COMPUTE_URL: "https://us-west1.cloud.twistlock.com/us-4-161028595"
-  BUILD_DIR: "./updater_image"
+  BUILD_DIR: "./docker"
 
 jobs:
 
