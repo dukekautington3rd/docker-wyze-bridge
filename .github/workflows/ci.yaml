@@ -80,7 +80,7 @@ jobs:
         password: ${{ env.DOCKER_TOKEN }}
     - name: Build the Docker image for scanning purposes
       run: |
-        docker build -f Dockerfile.multiarch -t "$DOCKER_USERNAME/$REPO:$BUILD_ID" $BUILD_DIR
+        docker build -t "$DOCKER_USERNAME/$REPO:$BUILD_ID" $BUILD_DIR
     # - name: image sandbox
     #   run: |
     #     TOKEN=`curl -k -H "Content-Type: application/json" -X POST -d '{"username":"'"$PRISMA_USERNAME"'","password":"'"$PRISMA_PASSWORD"'"}' $COMPUTE_URL/api/v1/authenticate | jq -r .token `
@@ -105,7 +105,7 @@ jobs:
       with:
         context: ${{env.BUILD_DIR}}  # Path to the Dockerfile and build context
         platforms: linux/amd64,linux/arm64  # Specify the desired platforms
-        file: Dockerfile.multiarch
+        # file: Dockerfile.multiarch
         push: true 
         tags: |
             ${{env.DOCKER_USERNAME}}/${{env.REPO}}:${{env.BUILD_ID}}
