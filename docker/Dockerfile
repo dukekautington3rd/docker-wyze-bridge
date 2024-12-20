@@ -10,7 +10,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN pwd && ls
-COPY ../app/ /build/app/
+COPY app/ /build/app/
 RUN pip3 install --disable-pip-version-check --prefix=/build/usr/local -r /build/app/requirements.txt
 RUN echo "BUILDING IMAGE FOR $(uname -m)" && \
     if [ "$(uname -m)" = "armv7l" ]; then \
